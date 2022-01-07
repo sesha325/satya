@@ -1,0 +1,19 @@
+pipeline{
+     agent any
+     
+     environment{
+        PATH="/opt/maven3/bin:$"
+      }
+     stages{
+        stage("git checkout"){
+           steps{
+             git 'https://github.com/sureshtechnologies-ec/maven-web-application.git'
+           }
+         }
+         stage("Maven Build"){
+            steps{
+              sh"mvn clean package"
+             }
+          } 
+       }
+ }
